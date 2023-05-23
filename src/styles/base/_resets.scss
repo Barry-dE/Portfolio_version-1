@@ -1,0 +1,22 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100vh;
+  font-size: 62.5%; // 10px/16px = 62.5% -> 1rem = 10px This will make scaling down the contents to fit a viewport very easy when i want to make it responsive
+}
+
+body {
+  font-family: $font-primary;
+  font-weight: 300;
+  line-height: 1.6;
+  perspective: 1px;
+}
