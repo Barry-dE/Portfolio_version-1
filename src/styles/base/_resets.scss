@@ -1,3 +1,5 @@
+@import "./typography";
+
 *,
 *::before,
 *::after {
@@ -15,8 +17,10 @@ html {
 }
 
 body {
-  font-family: $font-primary;
+  font-family: "sf-regular", sans-serif;
   font-weight: 300;
   line-height: 1.6;
   perspective: 1px;
+  background-color: $bgcolor-main;
+  color: $primary-text-color;
 }
