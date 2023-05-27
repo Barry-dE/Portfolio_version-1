@@ -11,6 +11,7 @@
   grid-column: 1 /-1;
   grid-row: 1 / span 2;
   text-align: center;
+  padding-top: 0.5rem;
 
   &__text--italic {
     text-transform: lowercase;
@@ -21,13 +22,41 @@
     border-radius: 10rem;
     padding: 0.4rem 1.5rem;
     letter-spacing: normal;
+    font-size: 6rem;
   }
 
   h1 {
     text-transform: uppercase;
-    font-size: 6rem;
-    line-height: 1.3;
+    font-size: 7.5rem;
+    line-height: 1.15;
     font-weight: 700;
     letter-spacing: 0.4rem;
+    color: #e9e6e6;
+  }
+}
+
+.round-border {
+  display: inline-block;
+
+  &__image {
+    border-radius: 5rem;
+    width: 9rem;
+  }
+}
+
+.occupation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1 / span 2;
+  font-size: 3.4rem;
+  transform: translateY(-1rem);
+
+  &__dash {
+    width: 20rem;
+    height: 1px;
+    background-color: #fff;
+    display: inline-block;
+    margin: 0 0.9rem;
   }
 }
