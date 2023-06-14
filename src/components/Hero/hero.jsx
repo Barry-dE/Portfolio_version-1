@@ -1,42 +1,77 @@
-import image_1 from "../../assets/img/diogo-nunes-Wa9ilX9XYOI-unsplash-300.jpg";
-import image_2 from "../../assets/img/13.jpg";
+import Splitting from "splitting";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import observeElement from "../../animations/ElementObserver";
 import "./hero.scss";
+import sculpture from "../../assets/img/sculpture.jpg";
 
-function Hero() {
+export default function Hero() {
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    const headerElement = headerRef.current;
+
+    if (headerElement) {
+      Splitting({ target: headerElement, by: "chars" });
+
+      const characters = headerElement.querySelectorAll(".char");
+
+      gsap.set(characters, {
+        opacity: 0,
+        yPercent: 0,
+        transformStyle: "preserve-3d",
+      });
+
+      const animation = gsap.to(characters, {
+        opacity: 1,
+        yPercent: 130,
+        stagger: 0.07,
+        duration: 0.8,
+        ease: "back.out",
+        overwrite: "auto",
+      });
+
+      observeElement(headerElement).then(() => {
+        animation.restart();
+      });
+
+      return () => {
+        animation.kill();
+      };
+    }
+  }, []);
+
   return (
     <div>
-      <div className="hero-container">
-        <div className="hero-h1">
-          <h1 data-animation="paragraph" className="hero-h1__text">
-            I transform <span className="image"></span>
-            <span data-animation="header" className="hero-h1__text--italic">
-              ideas
-            </span>
-            <br /> into digital reality, <br /> one elegant s
-            <span className="round-border">
-              <img className="round-border__image" src={image_2} alt="" />
-            </span>
-            lution <br />
-            <span className=".round-border"></span>at a time.
+      <div className="hero">
+        <div className="hero__paragraph">
+          <h1 ref={headerRef} className="hero__text-h1" data-animation="header">
+            A <br />
+            Software <br /> Craftsman.
           </h1>
         </div>
-        <div className="occupation">
-          <span data-animation="header" className="occupation__code">
-            Software Engineer
-          </span>
-          <span className="occupation__dash"></span>
-          <span data-animation="header" className="occupation__write">
-            Technical Writer
-          </span>
+
+        <div className="image">
+          <img
+            className="sculpture"
+            src={sculpture}
+            alt="sculpture"
+            height={300}
+          />
         </div>
-        <div className="Rotating-text">
-          <figure>
-            <img src={image_1} alt="" />
-          </figure>
+
+        <div className="intro">
+          <p className="paragraph" data-animation="paragraph">
+            I am Barigbue Nbira (also known as PipScript). I am Software
+            Developer and Technical Writer based in Port Harcourt, Nigeria,
+            focused on transforming ideas into digital reality, one elegant
+            solution at a time. I am interested in photography, Web3, DevOps,
+            and Cloud. When I am not coding, I read, play video games, hangout
+            with my friends or explore nature.
+          </p>
         </div>
+        <div>hi</div>
       </div>
     </div>
   );
 }
-
-export default Hero;

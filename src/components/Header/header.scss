@@ -1,11 +1,20 @@
-.header-main {
-  padding-top: 0.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.header {
+  padding: 1.5rem 2rem;
+  height: 6rem;
+  @include flex;
+
   &__logo {
-    font-size: 1.6rem;
-    font-weight: bold;
-    padding: 0.5rem 1rem;
+    font-weight: 700;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  &__nav {
+    width: 40%;
+    font-size: 2rem;
+    font-weight: 400;
+    &-item {
+      @include flex;
+      width: 100%;
+    }
   }
 }
